@@ -16,10 +16,15 @@ fi
 cp "/$1" "$dir"
 }
 
+
+mkdir -p jail
+pushd jail
+
 ##   Essential ###
 push lib64/ld-linux-x86-64.so.2
 push lib32/ld-linux.so.2
-mkdir bin sbin
+cp ../Dockerfile .
+mkdir -p bin sbin
 ###############################
 
 for a in "$@"
@@ -36,3 +41,4 @@ red "${a}"
 push "${a#\/}" 
 done
 
+popd
