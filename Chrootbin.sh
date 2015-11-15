@@ -13,9 +13,7 @@ then
 #red "create $dir"
 mkdir -p "$dir" 
 fi
-
 cp "/$1" "$dir"
-
 }
 
 ##   Essential ###
@@ -26,17 +24,15 @@ mkdir bin sbin
 
 for a in "$@"
 do
-
-for b in $(LD_TRACE_LOADED_OBJECTS=1 $a | awk '/=>/{print $3}')
-do
+	for b in $(LD_TRACE_LOADED_OBJECTS=1 $a | awk '/=>/{print $3}')
+	do
 	### Push all lib
 	green "${b}"
 	push "${b#\/}"
-done
+	done
 
-### Push bin
+### Finally Push bin
 red "${a}"
 push "${a#\/}" 
-
 done
 
