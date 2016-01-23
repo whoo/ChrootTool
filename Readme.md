@@ -14,9 +14,10 @@ With your favorite command.
 ## Use-it for docker :)
 To use simple chroot inside docker container.
 ```bash
-./Chrootbin.sh /bin/bash
+./Chrootbin.sh /bin/busybox
+cd jail
 docker build -t simple .
-docker run -it --rm  simple /bin/bash
+docker run -it --rm  simple /bin/busybox sh
 ```
 
 ## For namespace
